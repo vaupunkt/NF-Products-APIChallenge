@@ -1,4 +1,5 @@
 import useSWR from "swr";
+import Link from "next/link";
 
 export default function ProductsPage() {
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
@@ -13,7 +14,9 @@ export default function ProductsPage() {
       {data.map((date) => {
         return (
           <li key={date.id}>
-            <h2>{date.name}</h2>
+            <h2>
+              <Link href={`/products/${date.id}`}>{date.name}</Link>
+            </h2>
             <p>{date.description}</p>
           </li>
         );
